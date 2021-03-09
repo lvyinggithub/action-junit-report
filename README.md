@@ -6,7 +6,7 @@
 </h1>
 
 <p align="center">
-    ... reports JUnit test results as GitHub pull request check.
+    ... reports JUnit test results as GitHub pull request check. 
 </p>
 
 <div align="center">
