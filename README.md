@@ -46,7 +46,7 @@ Based on action for [Surefire Reports by ScaCap](https://github.com/ScaCap/actio
 
 ## Setup
 
-### Configure the workflow
+### Configure the workflow  
 
 ```yml
 name: build
