@@ -16,14 +16,14 @@ jobs:
         uses: ./
         if: endsWith(github.ref, 'main') == false
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GHE_TOKEN }}
           check_name: Example JUnit Test Report
           report_paths: '**/surefire-reports/TEST-*.xml'
       - name: Test PyTest test import
         uses: ./
         if: endsWith(github.ref, 'main') == false
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GHE_TOKEN }}
           check_name: Example Pytest Report
           report_paths: test_results/python/report.xml
       - name: Install NPM
@@ -33,7 +33,7 @@ jobs:
         run: |
           npm run all
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GHE_TOKEN }}
 
   release:
     if: startsWith(github.ref, 'refs/tags/')
@@ -48,7 +48,7 @@ jobs:
         with:
           configuration: ".github/config/configuration.json"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GHE_TOKEN }}
 
       - name: Create Release
         uses: actions/create-release@v1
@@ -58,5 +58,5 @@ jobs:
           body: ${{steps.github_release.outputs.changelog}}
           prerelease: ${{ contains(github.ref, '-rc') || contains(github.ref, '-b') || contains(github.ref, '-a') }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GHE_TOKEN }}
 
